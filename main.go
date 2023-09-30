@@ -22,7 +22,7 @@ func help() {
 }
 
 func helloName(name []string) {
-	fmt.Println("Hello ",name[0])
+	fmt.Printf("Hello %s!\n", name[0])
 }
 
 func main() {
@@ -30,16 +30,24 @@ func main() {
 	// flag.Parse()
 	// fmt.Printf("Hello, %s!\n", *name)
 	// var avail_cmd[] string = ["-help","-name","-create","-delete"]
-	var command string = os.Args[1]
-	// fmt.Println(command)
-	switch command {
-	case "-help":
-		help()
-	case "-name":
-		if os.Args[2:] != nil {
-			helloName(os.Args[2:])
-		} else {
-			fmt.Println("Enter Your Name")
+	length := len(os.Args)
+    if length == 1 {
+        fmt.Println("Get Bored Try Below Commands")
+        fmt.Println("-help")
+        fmt.Println("-name")
+    }
+	if length >= 2 {
+		var command string = os.Args[1]
+		// fmt.Println(command)
+		switch command {
+		case "-help":
+			help()
+		case "-name":
+			if length >= 3 {
+				helloName(os.Args[2:])
+			} else {
+				fmt.Println("Enter Your Name After Command")
+			}
 		}
 	}
 	// help := flag.String("help")
