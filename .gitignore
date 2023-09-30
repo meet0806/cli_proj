@@ -1,0 +1,15 @@
+# Compiled binary files
+*.exe
+*.o
+*.a
+*.out
+
+# Output directories
+/_obj/
+/_test/
+/dist/
+/vendor/
+
+# Dependency directories (if using modules)
+/go.sum
+/go.mod
