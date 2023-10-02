@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"math/rand"
 	"os"
+	"os/exec"
 )
 
 func help() {
@@ -35,7 +36,7 @@ func deleteFile(fileName []string) error {
 	return nil
 }
 
-func tickTackToe(){
+func tickTackToe() {
 	fmt.Println("Coming Soon...")
 }
 
@@ -57,15 +58,27 @@ func playGame(gameNum int) error {
 	return nil
 }
 
+func ping(packets string, target[] string) error {
+	cmd := exec.Command("ping", "-c", packets, target[0]) // -c 4 means send 4 packets
+	output, err := cmd.CombinedOutput()
+	fmt.Println(string(output))
+	if err != nil {
+		fmt.Println("Error running ping command:", err)
+		os.Exit(1)
+	}
+	return nil
+}
+
 func main() {
 	length := len(os.Args)
 	if length == 1 {
 		fmt.Println("Get Bored Try Below Commands")
 		fmt.Println("-help")
-		fmt.Println("-name [yourName]     Prints Hello [yourName]")
-		fmt.Println("-create [fileName]   This Command will create file")
-		fmt.Println("-delete [fileName]   Command for Deleting File")
-		fmt.Println("-play [gameName]")
+		fmt.Println("-name [yourName]          Prints Hello [yourName]")
+		fmt.Println("-ping [packets] [target]  Pinging Server")
+		fmt.Println("-create [fileName]        This Command will create file")
+		fmt.Println("-delete [fileName]        Command for Deleting File")
+		fmt.Println("-play                     for playing games")
 	}
 	if length >= 2 {
 		var command string = os.Args[1]
@@ -96,6 +109,11 @@ func main() {
 				fmt.Print("Enter the number of the game: ")
 				fmt.Scan(&number)
 				playGame(number)
+			}
+		case "-ping":
+			if length >= 4 {
+				packets := os.Args[2]
+				ping(packets, os.Args[3:])
 			}
 		}
 	}
