@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"os"
 )
 
@@ -34,6 +35,28 @@ func deleteFile(fileName []string) error {
 	return nil
 }
 
+func tickTackToe(){
+	fmt.Println("Coming Soon...")
+}
+
+func playGame(gameNum int) error {
+	if gameNum == 1 {
+		var number int
+		randNum := rand.Intn(10)
+		fmt.Println("Enter any number between 1 to 10:")
+		fmt.Scan(&number)
+		if number == randNum {
+			fmt.Println("You got it right")
+		} else {
+			fmt.Println("Try again!!")
+		}
+	} else if gameNum == 2 {
+		tickTackToe()
+
+	}
+	return nil
+}
+
 func main() {
 	length := len(os.Args)
 	if length == 1 {
@@ -42,6 +65,7 @@ func main() {
 		fmt.Println("-name [yourName]     Prints Hello [yourName]")
 		fmt.Println("-create [fileName]   This Command will create file")
 		fmt.Println("-delete [fileName]   Command for Deleting File")
+		fmt.Println("-play [gameName]")
 	}
 	if length >= 2 {
 		var command string = os.Args[1]
@@ -62,6 +86,16 @@ func main() {
 		case "-remove":
 			if length >= 3 {
 				deleteFile(os.Args[2:])
+			}
+		case "-play":
+			var number int
+			if length == 2 {
+				fmt.Println("List of Games")
+				fmt.Println("1.Guess the Number")
+				fmt.Println("2.Tick-tack-toe")
+				fmt.Print("Enter the number of the game: ")
+				fmt.Scan(&number)
+				playGame(number)
 			}
 		}
 	}
