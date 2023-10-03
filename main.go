@@ -40,6 +40,10 @@ func tickTackToe() {
 	fmt.Println("Coming Soon...")
 }
 
+func chess(){
+	fmt.Println("Coming Soon...")
+}
+
 func playGame(gameNum int) error {
 	if gameNum == 1 {
 		var number int
@@ -53,7 +57,8 @@ func playGame(gameNum int) error {
 		}
 	} else if gameNum == 2 {
 		tickTackToe()
-
+	} else if gameNum == 3 {
+		chess()
 	}
 	return nil
 }
@@ -106,6 +111,7 @@ func main() {
 				fmt.Println("List of Games")
 				fmt.Println("1.Guess the Number")
 				fmt.Println("2.Tick-tack-toe")
+				fmt.Println("3.Chess")
 				fmt.Print("Enter the number of the game: ")
 				fmt.Scan(&number)
 				playGame(number)
