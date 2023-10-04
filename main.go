@@ -8,12 +8,35 @@ import (
 	"github.com/enescakir/emoji"
 )
 
+func ticktacktoe() {
+	board := [][]string{{"O", "", "X"}, {"O", "X", "O"}, {"X", "O", "X"}}
+	fmt.Println("Tic-Tac-Toe")
+	fmt.Println("-------------")
+	for i := 0; i < 3; i++ {
+		for j := 0; j < 3; j++ {
+			if j > 0 {
+				fmt.Print(" | ")
+			}
+			if board[i][j] == "" {
+				fmt.Print(" ")
+			} else {
+				fmt.Print(board[i][j])
+			}
+		}
+		fmt.Println()
+		if i < 2 {
+			fmt.Println("-------------")
+		}
+	}
+	fmt.Println("-------------")
+}
+
 func help() {
-	fmt.Println("Only GOD Can Help You",emoji.IndexPointingUp)
+	fmt.Println("Only GOD Can Help You", emoji.IndexPointingUp)
 }
 
 func helloName(name []string) {
-	fmt.Println("Hello ",name[0]+"!",emoji.WavingHand)
+	fmt.Println("Hello ", name[0]+"!", emoji.WavingHand)
 }
 
 func createFile(fileName []string) error {
@@ -45,13 +68,13 @@ func guessGame() {
 	if number == randNum {
 		fmt.Println("You got it !!")
 	} else {
-		fmt.Println("Try again You are in HELL Loop !!",emoji.SkullAndCrossbones)
+		fmt.Println("Try again You are in HELL Loop !!", emoji.SkullAndCrossbones)
 		guessGame()
 	}
 }
 
 func tickTackToe() {
-	fmt.Println("Coming Soon...")
+	ticktacktoe()
 }
 
 func chess() {
@@ -87,9 +110,9 @@ func main() {
 		fmt.Println("-help")
 		fmt.Println("-name [yourName]          Prints Hello [yourName]")
 		fmt.Println("-ping [packets] [target]  Pinging Server")
-		fmt.Println("-create [fileName]        This Command will create file",emoji.FloppyDisk)
-		fmt.Println("-delete [fileName]        Command for Deleting File",emoji.Wastebasket)
-		fmt.Println("-play                     for playing games",emoji.VideoGame)
+		fmt.Println("-create [fileName]        This Command will create file", emoji.FloppyDisk)
+		fmt.Println("-delete [fileName]        Command for Deleting File", emoji.Wastebasket)
+		fmt.Println("-play                     for playing games", emoji.VideoGame)
 	}
 	if length >= 2 {
 		var command string = os.Args[1]
@@ -114,10 +137,10 @@ func main() {
 		case "-play":
 			var number int
 			if length == 2 {
-				fmt.Println("List of Games",emoji.Joystick)
-				fmt.Println("1.Guess the Number",emoji.ThinkingFace)
-				fmt.Println("2.Tick-tack-toe",emoji.GameDie)
-				fmt.Println("3.Chess",emoji.ChessPawn)
+				fmt.Println(emoji.BowAndArrow, "Checkout below list of Games", emoji.Joystick)
+				fmt.Println("1.Guess the Number", emoji.ThinkingFace)
+				fmt.Println("2.Tick-tack-toe", emoji.GameDie)
+				fmt.Println("3.Chess", emoji.ChessPawn)
 				fmt.Print("Enter the number of the game: ")
 				fmt.Scan(&number)
 				playGame(number)
