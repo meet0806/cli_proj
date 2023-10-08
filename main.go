@@ -50,7 +50,7 @@ func createFile(fileName []string) error {
 	return nil
 }
 
-func deleteFile(fileName []string) error {
+func removeFile(fileName []string) error {
 	err := os.Remove(fileName[0])
 	if err != nil {
 		fmt.Println("Error while deleting file:", err)
@@ -111,7 +111,7 @@ func main() {
 		fmt.Println("-name [yourName]          Prints Hello [yourName]")
 		fmt.Println("-ping [packets] [target]  Pinging Server")
 		fmt.Println("-create [fileName]        This Command will create file", emoji.FloppyDisk)
-		fmt.Println("-delete [fileName]        Command for Deleting File", emoji.Wastebasket)
+		fmt.Println("-remove [fileName]        Command for Deleting File", emoji.Wastebasket)
 		fmt.Println("-play                     for playing games", emoji.VideoGame)
 	}
 	if length >= 2 {
@@ -132,7 +132,7 @@ func main() {
 			}
 		case "-remove":
 			if length >= 3 {
-				deleteFile(os.Args[2:])
+				removeFile(os.Args[2:])
 			}
 		case "-play":
 			var number int
