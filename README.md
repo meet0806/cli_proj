@@ -1,2 +1,2 @@
 # Command Line tool 
-creating command line tool for fun.
+Creating a command line tool for fun.
