@@ -1,10 +1,12 @@
 package main
 
 import (
+	"cli_proj/url_shortner"
 	"fmt"
 	"math/rand"
 	"os"
 	"os/exec"
+
 	"github.com/enescakir/emoji"
 )
 
@@ -68,7 +70,7 @@ func guessGame() {
 	if number == randNum {
 		fmt.Println("You got it !!")
 	} else {
-		fmt.Println("Try again You are in HELL Loop !!", emoji.SkullAndCrossbones)
+		fmt.Println("Try again You are in Loop !!", emoji.SkullAndCrossbones)
 		guessGame()
 	}
 }
@@ -107,7 +109,6 @@ func main() {
 	length := len(os.Args)
 	if length == 1 {
 		fmt.Println("Get Bored Try Below Commands")
-		fmt.Println("-help")
 		fmt.Println("-name [yourName]          Prints Hello [yourName]")
 		fmt.Println("-ping [packets] [target]  Pinging Server")
 		fmt.Println("-create [fileName]        This Command will create file", emoji.FloppyDisk)
@@ -118,8 +119,6 @@ func main() {
 		var command string = os.Args[1]
 		// fmt.Println(command)
 		switch command {
-		case "-help":
-			help()
 		case "-name":
 			if length >= 3 {
 				helloName(os.Args[2:])
@@ -144,6 +143,10 @@ func main() {
 				fmt.Print("Enter the number of the game: ")
 				fmt.Scan(&number)
 				playGame(number)
+			}
+		case "-shorten":
+			if length >= 3 {
+				url_shortner.WillWOrk(os.Args[2:])
 			}
 		case "-ping":
 			if length >= 4 {
